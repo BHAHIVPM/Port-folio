@@ -27,7 +27,7 @@ function About(op) {
                     </h1>
                     
                 </section>
-                <section className='aboutcontent '>
+                <section className='aboutcontent align-items-center '>
                     <div 
                     >
                         <section
@@ -55,7 +55,7 @@ function About(op) {
                             <p
                             data-aos="slide-left"   data-aos-easing="ease-in-out"
 
-                            >Welcome to my portfolio! I'm deeply passionate about JavaScript and its ability to create dynamic web applications. My journey into web development began in July 2022 I thrive on MERN stack development, constantly learning and pushing boundaries to build innovative solutions. My insatiable curiosity drives me to stay updated with the latest developments, aiming to create impactful projects that contribute to technological advancement
+                            >Welcome to my portfolio! I'm a passionate Java Full Stack Developer, skilled in both front-end and back-end development. I specialize in building dynamic user interfaces and robust backend systems using Java and modern frameworks. Continuously learning, I stay updated with the latest advancements to enhance my skills and create innovative solutions. My goal is to develop impactful projects that contribute to technological growth and efficiency.
                             </p>
                         </section>
 
