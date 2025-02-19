@@ -55,7 +55,7 @@ function Full() {
 
         <div className={`front `}>
           <section className={` ${ count==false? "darkbg":"bg-light"}`}>
-            <h1>WELCOME TO MY PORTFOLIO</h1>
+            <h1 className={` ${ count==false? "frontdark":"frontlight"}`}>WELCOME TO MY PORTFOLIO</h1>
           </section>
         </div>
     </div>

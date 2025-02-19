@@ -1,5 +1,5 @@
 import { useState ,useEffect} from 'react'
-import pic1 from './assets/pic1.jpg'
+import pic1 from './assets/iam.jpg'
 import './App.css'
 import { FaGithub,FaLinkedin,FaTwitter,FaFacebook } from "react-icons/fa";
 import DecryptedText from "./assets/TextAnimations/DecryptedText/DecryptedText.jsx";
