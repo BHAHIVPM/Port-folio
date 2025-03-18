@@ -9,7 +9,6 @@ import Aos from 'aos';
 import 'aos/dist/aos.css'
 
 function About(op) {
-    const [count, setCount] = useState(0)
     useEffect(()=>{
       Aos.init({
         mirror: true,
