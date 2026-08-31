@@ -8,14 +8,13 @@ import 'aos/dist/aos.css'
 import Modal from 'react-bootstrap/Modal';
 import me from './assets/me.jpg'
 import dot from "./assets/dot.webp";
-// EmailJS credentials: pull from env vars if present, fall back to the existing
-// hardcoded values so the form keeps working even without a .env file.
-// If the form still fails after this fix, the cause is almost certainly on the
+// EmailJS credentials.
+// NOTE: if the form still fails after this, the cause is almost certainly on the
 // EmailJS dashboard side (service/template disabled, public key not allow-listed
 // for this domain, or the free-tier monthly email quota used up) - not the code.
-const EMAILJS_SERVICE_ID = import.meta.env?.VITE_EMAILJS_SERVICE_ID || 'service_8c05n6j';
-const EMAILJS_TEMPLATE_ID = import.meta.env?.VITE_EMAILJS_TEMPLATE_ID || 'template_sox7s6t';
-const EMAILJS_PUBLIC_KEY = import.meta.env?.VITE_EMAILJS_PUBLIC_KEY || 'OgsMLiMYVW3k4CaAi';
+const EMAILJS_SERVICE_ID = 'service_8c05n6j';
+const EMAILJS_TEMPLATE_ID = 'template_sox7s6t';
+const EMAILJS_PUBLIC_KEY = 'OgsMLiMYVW3k4CaAi';
 
 function Contact(op) {
   const [count, setCount] = useState("");

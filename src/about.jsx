@@ -29,19 +29,19 @@ function About(op) {
                 <section className='aboutcontent align-items-center '>
                     <div 
                     >
-                        <section
-                         data-aos="zoom-in"   data-aos-easing="ease-in-out"
-                        className={`rotate ${op.mde==false? "rotatedark":""}`}>
-                            <img src={`${op.mde==true? rotate1 : rotate2}`} alt="rotate" />
-                            <img src={`${picfsd}`} alt="rotate" />
-                        </section>
-                        <section 
-                         data-aos="fade-up"     data-aos-easing="ease-in-out"
-                        className=' aboutimg '>
-                            <img src={`${pic1}`} alt="DP" />
-
-
-                        </section>
+                        <div className='aboutimgwrap'>
+                            <section 
+                             data-aos="fade-up"     data-aos-easing="ease-in-out"
+                            className=' aboutimg '>
+                                <img src={`${pic1}`} alt="DP" />
+                            </section>
+                            <section
+                             data-aos="zoom-in"   data-aos-easing="ease-in-out"
+                            className={`rotate ${op.mde==false? "rotatedark":""}`}>
+                                <img src={`${op.mde==true? rotate1 : rotate2}`} alt="rotate" />
+                                <img src={`${picfsd}`} alt="rotate" />
+                            </section>
+                        </div>
                     </div>
                     <div className='abouttext '>
                         <section>

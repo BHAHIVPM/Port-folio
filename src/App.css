@@ -67,17 +67,37 @@
     align-items: center;
 }
 .frontFade h1{
-    font-size: clamp(1.5rem, 5vw, 4.5rem);
+    font-size: clamp(1.1rem, 3vw, 2.2rem);
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
     text-align: center;
     padding: 0 20px;
+    position: relative;
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(20px);
     animation: introFadeText 0.9s ease-out 0.1s forwards;
+}
+.frontFade h1::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0;
+    background-color: var(--theme);
+    animation: introUnderline 0.7s ease-out 0.6s forwards;
+}
+@keyframes introUnderline {
+    to{
+        width: 60px;
+    }
 }
 @keyframes introFadeText {
     0%{
         opacity: 0;
-        transform: translateY(28px);
+        transform: translateY(20px);
     }
     100%{
         opacity: 1;
@@ -86,11 +106,9 @@
 }
 .frontdark{
     color: var(--theme);
-    text-shadow: 5px 5px 0px white;
 }
 .frontlight{
     color: var(--theme);
-    text-shadow: 5px 5px 0px rgb(5, 64, 34);
 }
 
 
@@ -277,15 +295,17 @@ transform: translateY(-5px);
     margin-left: 15px;
 }
 .scrl{
-    height: 40px;
-    width: 70px;
+    height: 42px;
+    min-width: 70px;
+    width: auto;
     display: flex;
-    padding: 0px 50px;
+    padding: 0px 22px;
     justify-content: center;
     align-items: center;
     margin: 0px 10px;
     font-weight: 600px;
     color: black;
+    white-space: nowrap;
    position: relative;
    overflow: hidden;
    background-color: #1ba09b1c;
@@ -331,8 +351,11 @@ transform: translateY(-5px);
     text-decoration: none;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 100px;
+    height: 42px;
+    width: auto;
+    min-width: 100px;
+    padding: 0px 22px;
+    white-space: nowrap;
     font-weight: bold;
     color: white!important;
     border-radius: 20px;
@@ -769,6 +792,11 @@ color: green;
     /* background-color: blueviolet; */
     position: relative;
 }
+.aboutimgwrap{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
 .aboutimg{
 overflow: hidden;
 height: 100%;
@@ -793,8 +821,8 @@ position: relative;
     background-color: var(--bgcolor);
     position: absolute;
     z-index: 9;
-    right:9%;
-    bottom: 1%;
+    right: -60px;
+    bottom: -60px;
     padding: 5px;
     
  
@@ -1888,8 +1916,8 @@ background-color:rgb(32, 32, 32);
         padding: 30px 20px!important;
     }
     .rotate{
-        right:-3%;
-        bottom: -3%;
+        right: -60px;
+        bottom: -60px;
        
      
     }

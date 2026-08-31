@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Button from "react-bootstrap/Button";
 import Skillbox from "./skillbox.jsx";
-import { FaHtml5, FaBootstrap, FaJava, FaCss3Alt, FaReact, FaGitAlt, FaGithub } from "react-icons/fa";
+import { FaHtml5, FaBootstrap, FaJava, FaCss3Alt, FaReact, FaGitAlt, FaGithub, FaDocker } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { IoLogoJavascript } from "react-icons/io5";
 import { BsFiletypeSql } from "react-icons/bs";
-import { DiPostgresql } from "react-icons/di";
+import { DiPostgresql, DiRedis } from "react-icons/di";
 import { VscVscode } from "react-icons/vsc";
-import { SiPostman } from "react-icons/si";
+import { SiPostman, SiSonarqube, SiApachemaven, SiMysql, SiHibernate, SiApachekafka } from "react-icons/si";
 import dot from "./assets/dot.webp";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -65,6 +65,10 @@ function Skill(op) {
               <Skillbox mde={op.mde} name={"SPRINGBOOT"} icon={<BiLogoSpringBoot />} />
               <Skillbox mde={op.mde} name={"SQL"} icon={<BsFiletypeSql />} />
               <Skillbox mde={op.mde} name={"POSTGRESQL"} icon={<DiPostgresql />} />
+              <Skillbox mde={op.mde} name={"MYSQL"} icon={<SiMysql />} />
+              <Skillbox mde={op.mde} name={"REDIS"} icon={<DiRedis />} />
+              <Skillbox mde={op.mde} name={"HIBERNATE"} icon={<SiHibernate />} />
+              <Skillbox mde={op.mde} name={"KAFKA"} icon={<SiApachekafka />} />
             </div>
           )}
 
@@ -74,6 +78,9 @@ function Skill(op) {
               <Skillbox mde={op.mde} name={"GITHUB"} icon={<FaGithub />} />
               <Skillbox mde={op.mde} name={"VSCODE"} icon={<VscVscode />} />
               <Skillbox mde={op.mde} name={"POSTMAN"} icon={<SiPostman />} />
+              <Skillbox mde={op.mde} name={"DOCKER"} icon={<FaDocker />} />
+              <Skillbox mde={op.mde} name={"MAVEN"} icon={<SiApachemaven />} />
+              <Skillbox mde={op.mde} name={"SONARQUBE"} icon={<SiSonarqube />} />
             </div>
           )}
         </section>
