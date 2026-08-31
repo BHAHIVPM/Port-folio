@@ -48,6 +48,7 @@ function Navbar(op) {
         <section className='d-flex align-items-center justify-content-evenly '>
         <a href='#home ' className={`scrl text-decoration-none  ${activeSection==="home"? "active":""}  `}>Home</a>
         <a href='#about ' className={`scrl text-decoration-none ${activeSection==="about"? "active":""}  `}  >About</a>
+        <a href='#experience ' className={`scrl text-decoration-none ${activeSection==="experience"? "active":""}  `}>Experience</a>
         <a href='#project ' className={`scrl text-decoration-none ${activeSection==="project"? "active":""}  `}>Project</a>
         <a href='#skill'  className={`scrl text-decoration-none ${activeSection==="skill"? "active":""}  `}>Skills</a>
         <a href='#contact ' className={`scrl text-decoration-none ${activeSection==="contact"? "active":""}  `}>Contact</a>
@@ -64,6 +65,7 @@ function Navbar(op) {
        <section className={`menubar d-flex flex-column align-items-center justify-content-evenly ${count==true? "menuhide":"menushow"}`}>
         <a href='#home ' className={`scrl text-decoration-none ${activeSection==="home"? "active":""}  `}>Home</a>
         <a href='#about ' className={`scrl text-decoration-none ${activeSection==="about"? "active":""}  `} >About</a>
+        <a href='#experience ' className={`scrl text-decoration-none ${activeSection==="experience"? "active":""}  `}>Experience</a>
         <a href='#project ' className={`scrl text-decoration-none ${activeSection==="project"? "active":""}  `}>Project</a>
         <a href='#skill' className={`scrl text-decoration-none ${activeSection==="skill"? "active":""}  `}>Skills</a>
         <a href='#contact ' className={`scrl text-decoration-none ${activeSection=="contact"? "active":""}  `}>Contact</a>

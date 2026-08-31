@@ -36,128 +36,61 @@
   } 
 /* ---------------------------------------------- */
 
-.front{
-    height: 280vh;
-    width: 200vw;
-    position:absolute;
+/* ---- IntroFade: mild fade + slight upward entrance, shown once per browser session ---- */
+.frontFade{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
     z-index: 999;
     top: 0;
-    visibility: hidden;
-    opacity: 0;
-    animation: front  4s ease-in-out ;
+    left: 0;
+    pointer-events: none;
+    animation: introFadeOut 1.4s ease-in-out forwards;
 }
-@keyframes front {
+@keyframes introFadeOut {
     0%{
-       visibility:visible;opacity: 1;
-    }
-    90%{
         opacity: 1;
     }
-   99%{
-    visibility: visible;
-
-   }
+    65%{
+        opacity: 1;
+    }
     100%{
-        visibility: hidden;
         opacity: 0;
+        visibility: hidden;
     }
 }
-.front>section h1{
-    font-size: clamp(1.5rem, 5vw, 6rem);
-    color: var(--theme);
-    transform:scale(0);
-    animation: fronth1  1.8s ease-in-out ;
-}
-.frontdark{
-    text-shadow: 5px 5px 0px white;
-}
-.frontlight{
-    text-shadow: 5px 5px 0px rgb(5, 64, 34);
-}
-@keyframes fronth1 {
-    0%{
-        transform:scale(1);
-    }
-   90%{
-    transform:scale(1);
-
-   }
-    100%{
-        transform:scale(0);
-    }
-}
-.front>section{
+.frontFade>section{
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: -33%;
-    left: -25%;
-    animation: frontrotate 1.7s 1.8s ease-in-out ;
-    /* background-color: var(--theme); */
-
 }
-@keyframes frontrotate {
+.frontFade h1{
+    font-size: clamp(1.5rem, 5vw, 4.5rem);
+    text-align: center;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(28px);
+    animation: introFadeText 0.9s ease-out 0.1s forwards;
+}
+@keyframes introFadeText {
     0%{
-        transform: rotate(0deg) ;
-    }
-   
-    40%{
-        transform: rotate(90deg);
+        opacity: 0;
+        transform: translateY(28px);
     }
     100%{
-        transform: rotate(90deg);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
-.front>section::before{
-    content: '';
-    position: absolute;
-    height: 45%;
-    width: 100%;
-    top: 0;
-    background-color: var(--theme);
-    animation: fronttop 4s ease-in-out;
-
+.frontdark{
+    color: var(--theme);
+    text-shadow: 5px 5px 0px white;
 }
-@keyframes fronttop {
-    0%{
-        top: 10%;
-    }
-    30%{
-        top: 0;
-    }
-    82%{
-        top: 0;
-    }
-    100%{
-        top: -100%;
-    }
-}
-.front>section::after{
-    content: '';
-    position: absolute;
-    height: 45%;
-    width: 100%;
-    background-color: var(--theme);
-    bottom: 0;
-    animation: frontbottom 4s ease-in-out;
-
-}
-@keyframes frontbottom {
-    0%{
-        bottom: 10%;
-    }
-    30%{
-        bottom: 0;
-    }
-    82%{
-        bottom: 0;
-    }
-    100%{
-        bottom:-100%;
-    }
+.frontlight{
+    color: var(--theme);
+    text-shadow: 5px 5px 0px rgb(5, 64, 34);
 }
 
 
@@ -906,6 +839,65 @@ animation: rotate 10s infinite linear ;
 .abouttext h2>span{
     color:var(--theme);
 }
+/* ==================================================EXPERIENCE============================================================= */
+.experiencecontent{
+    width: 100%;
+    padding: 25px 140px;
+}
+.experiencecard{
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    background-color: var(--bgcolor);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s;
+}
+.experiencecarddark{
+    background-color: rgb(32, 32, 32);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
+}
+.experienceicon{
+    font-size: 50px;
+    color: var(--theme);
+    flex-shrink: 0;
+}
+.experiencedetails h3{
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.experiencedetails h4{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--theme);
+    margin-bottom: 8px;
+}
+.experiencemeta{
+    font-size: 16px!important;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-bottom: 18px;
+}
+.experiencedetails ul{
+    padding-left: 20px;
+    margin: 0;
+}
+.experiencedetails ul li{
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+@media (max-width:900px) {
+    .experiencecontent{
+        padding: 20px 25px;
+    }
+    .experiencecard{
+        flex-direction: column;
+        padding: 25px;
+    }
+}
 /* ===========================PROJECTS============================================== */
 /* boxes for Project */
 
@@ -1417,6 +1409,15 @@ color: white;
     font-weight: bold;
     height: 40px;
     width: 60%;
+}
+.contactform>textarea+Button:disabled{
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.contactformerror{
+    color: #ff6b6b!important;
+    font-size: 15px!important;
+    margin-top: 10px!important;
 }
 /* --------------------------------------------------- */
 .button1 {

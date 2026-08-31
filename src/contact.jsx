@@ -8,9 +8,20 @@ import 'aos/dist/aos.css'
 import Modal from 'react-bootstrap/Modal';
 import me from './assets/me.jpg'
 import dot from "./assets/dot.webp";
+// EmailJS credentials: pull from env vars if present, fall back to the existing
+// hardcoded values so the form keeps working even without a .env file.
+// If the form still fails after this fix, the cause is almost certainly on the
+// EmailJS dashboard side (service/template disabled, public key not allow-listed
+// for this domain, or the free-tier monthly email quota used up) - not the code.
+const EMAILJS_SERVICE_ID = import.meta.env?.VITE_EMAILJS_SERVICE_ID || 'service_8c05n6j';
+const EMAILJS_TEMPLATE_ID = import.meta.env?.VITE_EMAILJS_TEMPLATE_ID || 'template_sox7s6t';
+const EMAILJS_PUBLIC_KEY = import.meta.env?.VITE_EMAILJS_PUBLIC_KEY || 'OgsMLiMYVW3k4CaAi';
+
 function Contact(op) {
   const [count, setCount] = useState("");
   const [msg, setmsg] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const shine=()=>{
     setCount("btn-shine button1");
     setTimeout(() => {
@@ -34,26 +45,29 @@ function Contact(op) {
   
     const sendEmail = (e) => {
       e.preventDefault();
-      
+      if (sending) return;
+      setSendError(false);
+      setSending(true);
+
       emailjs
-        .sendForm('service_8c05n6j', 'template_sox7s6t', form.current, {
-          publicKey: 'OgsMLiMYVW3k4CaAi',
+        .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current, {
+          publicKey: EMAILJS_PUBLIC_KEY,
         })
         .then(
           () => {
+            setSending(false);
             setShow(true);
-      setTimeout(()=>{
-        setShow(false);
-
-      },4000)
-            console.log('SUCCESS!');
+            setTimeout(()=>{
+              setShow(false);
+            },4000)
             e.target[0].value="";
             e.target[1].value="";
             e.target[2].value="";
-            
           },
           (error) => {
-            console.log('FAILED...', error.text);
+            setSending(false);
+            setSendError(true);
+            console.error('EmailJS send failed:', error?.text || error);
           },
         );
     };
@@ -214,7 +228,10 @@ function Contact(op) {
                   <input type="text" name="user_name"  placeholder='FULL NAME' required/>
                   <input  name="user_email" type='email' placeholder='EMAIL ADDRESS'  required/>
                   <textarea  name="message" id=""  placeholder='MESSAGE' required ></textarea>
-                  <Button onClick={shine} type="submit"  className={`${count} submitbtn`}  variant="primary">SHARE YOUR CODE</Button>
+                  <Button onClick={shine} type="submit" disabled={sending} className={`${count} submitbtn`}  variant="primary">{sending? "SENDING...":"SHARE YOUR CODE"}</Button>
+                  {sendError && (
+                    <p className='contactformerror'>Couldn't send that — please email me directly at bhahivpm@gmail.com instead.</p>
+                  )}
                 </form>
               </section>
             </section>

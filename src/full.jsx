@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './nav.jsx'
 import Home from './home.jsx'
 import About from './about.jsx'
+import Experience from './experience.jsx'
 import Project from './project.jsx'
 import Projectboxes from './projectboxs.jsx'
 import Test from './test.jsx'
@@ -13,10 +14,24 @@ import Squares from "./assets/Backgrounds/Squares/Squares.jsx";
 import { FaArrowCircleUp , FaSun,FaMoon} from "react-icons/fa";
 import Footer from './footer.jsx'
 import ClickSpark from "./assets/Animations/ClickSpark/ClickSpark.jsx";
+
+// IntroFade shows once per browser session (sessionStorage), not on every refresh within that tab.
+const shouldShowIntro = () => {
+  try {
+    if (sessionStorage.getItem('introFadeShown')) return false;
+    sessionStorage.setItem('introFadeShown', '1');
+    return true;
+  } catch (e) {
+    // sessionStorage unavailable (e.g. private mode) - default to not showing repeatedly.
+    return false;
+  }
+}
+
 function Full() {
     let a= !(window.matchMedia('(prefers-color-scheme: dark)').matches);
     console.log(a);
   const [count, setCount] = useState(a)
+  const [showIntro] = useState(shouldShowIntro)
   const mode=()=>{
     setCount(!count);
   }
@@ -37,6 +52,7 @@ function Full() {
        <Navbar mde={count}/>
       <Home mde={count}/>
       <About mde={count}/>
+      <Experience mde={count}/>
       <Project mde={count}/>  
       
       <Skill mde={count}/>
@@ -53,11 +69,13 @@ function Full() {
 
         <Footer mde={count}/>
 
-        <div className={`front `}>
-          <section className={` ${ count==false? "darkbg":"bg-light"}`}>
-            <h1 className={` ${ count==false? "frontdark":"frontlight"}`}>WELCOME TO MY PORTFOLIO</h1>
-          </section>
-        </div>
+        {showIntro && (
+          <div className={`frontFade`}>
+            <section className={` ${ count==false? "darkbg":"bg-light"}`}>
+              <h1 className={` ${ count==false? "frontdark":"frontlight"}`}>WELCOME TO MY PORTFOLIO</h1>
+            </section>
+          </div>
+        )}
     </div>
   )
 }
